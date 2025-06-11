@@ -1,11 +1,10 @@
 <?php
 require 'connexion.php';
 
-$query = $db->prepare('SELECT * FROM users.first_name, users.last_name, adress.*FROM users JOIN address ON users.address = address.id WHERE id = :id');
+$query = $db->prepare('SELECT * FROM users JOIN address ON users.address = address.id WHERE users.id = :id');
 
 $parameters = [
     'id' => $_GET['id'],
-    'address' => $_GET['addresse']
 ];
 
 $query->execute($parameters);
